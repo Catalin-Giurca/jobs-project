@@ -1,0 +1,50 @@
+<div class="input-group input-group-lg">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-lg">Search</span>
+
+  </div>
+  <input type="text" class="form-control" placeholder="Enter keyword for desired job" aria-label="Large" [(ngModel)]='searchValue'
+    aria-describedby="inputGroup-sizing-sm" (keyup.enter)="searchJob(searchValue)">
+  <div class="input-group-append">
+    <button class="btn btn-secondary" type="button" (click)="searchJob(searchValue)">
+      <i class="fa fa-search"></i>
+    </button>
+  </div>
+</div>
+
+
+<ng-container *ngIf="isLive">
+
+  <div class="spacer">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Job Title</th>
+          <th scope="col">Job Id</th>
+          <th scope="col">Materials</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let job of jobs; index as i">
+          <th scope="row">{{ i + 1 }}</th>
+          <td>{{ job.suggestion}}</td>
+          <td>{{ job.uuid}}</td>
+          <td>
+            <button type="button" class="btn btn-outline-primary btn-sm m-0 waves-effect" (click)="openBooks(searchValue)">Discover books</button>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination [collectionSize]="collectionSize" [(page)]="page" [pageSize]="pageSize">
+      </ngb-pagination>
+
+      <select class="custom-select" style="width: auto" [(ngModel)]="pageSize">
+        <option [ngValue]="25">25 items per page</option>
+        <option [ngValue]="50">50 items per page</option>
+        <option [ngValue]="75">75 items per page</option>
+      </select>
+    </div>
+  </div>
+</ng-container>
