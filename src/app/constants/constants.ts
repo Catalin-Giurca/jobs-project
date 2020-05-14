@@ -1,4 +1,4 @@
-export const jobsApi = 'http://api.dataatwork.org/v1';
+export const jobsApi = 'https://api.dataatwork.org/v1';
 export const booksApi ='https://www.googleapis.com/books/v1';
 
 export const serviceUrl = {

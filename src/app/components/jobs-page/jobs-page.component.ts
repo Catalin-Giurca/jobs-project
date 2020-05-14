@@ -52,7 +52,6 @@ export class JobsPageComponent implements OnInit, OnChanges {
   }
 
   openBooks(searchValue: string) {
-    console.log('something');
     this.router.navigate(['books'], {state: {value: searchValue}});
   }
 
